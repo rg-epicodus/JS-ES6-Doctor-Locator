@@ -10,11 +10,21 @@
     <title>Doctor Finder | Your source for finding Doctors</title>
   </head>
   <body>
-    <div class="form-group">
-      <form>
-        <label for="userInputQuery"></label>
-        <input type="text" name="userInputQuery">
-      </form>
+    <div class="container">
+      <h1>Find a local Doctor</h1>
+      <div class="container">
+        <form  id="userInputQuery">
+          <div class="form-group">
+            <label for="userInputQuery">Enter a symptom:</label>
+            <input type="text" name="userInputQuery" placeholder="symptom" required>
+          </div>
+          <button type="submit" class="btn btn-success">Search</button>
+        </form>
+      </div>
+      <h3>Your local Doctors are:</h3>
+      <div class="container" id="dataOutput">
+        <p id="doctorInfo"></p>
+      </div>
     </div>
 
   </body>
