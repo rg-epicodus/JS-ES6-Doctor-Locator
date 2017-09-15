@@ -1,12 +1,15 @@
 import { doctor } from "./../js/doctor.js";
 
 $(document).ready(function(){
-function displayDoctors(callDoctor){
-  console.log("in front end function");
-  console.log(callDoctor);
-  callDoctor.forEach(function(test){
-    $('#doctorInfo').append(`<p>${test.fName} ${test.mName} ${test.lName}, ${test.title} `);
 
+function displayDoctors(callDoctor){
+  callDoctor.forEach(function(test){
+    $('#doctorInfo').prepend(`<p>${test.fName} ${test.mName} ${test.lName}, ${test.title} `);
+    $('#doctorInfo').prepend(`<p>${test.street} `);
+    $('#doctorInfo').prepend(`<p>${test.city} ${test.state} ${test.zip}`);
+    $('#doctorInfo').prepend(`<p>Phone: ${test.phone} Website: ${test.website}`);
+    $('#doctorInfo').prepend(`<p>Doctor is currently accepting new patients: ${test.acceptingPatients}`);
+    $('#doctorInfo').prepend(`<img src=${test.image_url} height="42" width="42"> `);
   });
 }
 
@@ -15,7 +18,15 @@ $('#userInputQuery').submit(function(e){
   let query = $("input[name='userInputQuery']").val();
   $("input").val("");
   doctor.findDoctorByQuery(query, displayDoctors);
+})
+
+$('#userInputName').submit(function(e){
+  e.preventDefault();
+  let name = $("input[name='userInputName']").val();
+  $("input").val("");
+  doctor.findDoctorByName(name, displayDoctors);
 });
+
 
 
 

@@ -6,24 +6,32 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-    <!-- <script type="text/javascript" src="js/doctor.js"></script> -->
     <title>Doctor Finder | Your source for finding Doctors</title>
   </head>
   <body>
     <div class="container">
       <h1>Find a local Doctor</h1>
-      <div class="container">
+      <div class="container formStyle">
         <form  id="userInputQuery">
           <div class="form-group">
-            <label for="userInputQuery">Enter a symptom:</label>
+            <label for="userInputQuery">Search for Doctor by symptom:</label><br>
             <input type="text" name="userInputQuery" placeholder="symptom" required>
+          </div>
+          <button type="submit" class="btn btn-success">Search</button>
+        </form>
+      </div>
+      <div class="container formStyle">
+        <form  id="userInputName">
+          <div class="form-group">
+            <label for="userInputName">Search for Doctor by name:</label><br>
+            <input type="text" name="userInputName" placeholder="name" required>
           </div>
           <button type="submit" class="btn btn-success">Search</button>
         </form>
       </div>
       <h3>Your local Doctors are:</h3>
       <div class="container" id="dataOutput">
-        <p id="doctorInfo"></p>
+        <p id="doctorInfo" class="col-3-md"></p>
       </div>
     </div>
 

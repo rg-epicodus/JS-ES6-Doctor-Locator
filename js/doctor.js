@@ -13,15 +13,15 @@ parseApiReturn: function(test, displayDoctors){
         lName: test.profile.last_name,
         title: test.profile.title,
         image_url: test.profile.image_url,
-        // street: test.practices.visit_address.street,
-        // city: test.practices.city,
-        // state: test.practices.state,
-        // zip: test.practices.zip,
-        // lat: test.practices.lat,
-        // lng:test.practices.lon,
-        // // phone: test.practices.phones.number,
-        // website: test.practices.website,
-        // acceptingPatients: test.practices.accepts_new_patients,
+        street: test.practices[0].visit_address.street,
+        city: test.practices[0].visit_address.city,
+        state: test.practices[0].visit_address.state,
+        zip: test.practices[0].visit_address.zip,
+        lat: test.practices[0].visit_address.lat,
+        lng:test.practices[0].visit_address.lon,
+        phone: test.practices[0].phones[0].number,
+        website: test.practices[0].website,
+        acceptingPatients: test.practices[0].accepts_new_patients,
       }
     );
   });
@@ -33,34 +33,28 @@ findDoctorByQuery: function(query, displayDoctors) {
   let apiRequest1 = fetch(`https://api.betterdoctor.com/2016-03-01/doctors?location=or-portland&user_key=${apiKey}&limit=2&query=${query}`)
   .then((res) => {
     res.json().then((test) => {
+      // if(test.legth === 0){
+      //   alert("No Doctors match your search.")
+      // } else {
+        doctor.parseApiReturn(test, displayDoctors);
+      // }
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+},
+
+findDoctorByName: function(name, displayDoctors) {
+  let apiRequest2 = fetch(`https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=or-portland&limit=10&user_key=${apiKey}`)
+  .then((res) => {
+    res.json().then((test) => {
+      console.log(test);
       doctor.parseApiReturn(test, displayDoctors);
     });
   })
   .catch((error) => {
     console.log(error);
   });
-
-
 }
-
 };
-
-
-
-
-
-
-
-// let apiRequest2 = fetch('http://api.openweathermap.org/data/2.5/forecast?q=seattle&appid=da2fec2009d72c8dd21ed03e0419a232')
-//   .then((res) => {
-//     res.json().then((data) => {
-//       console.log(data);
-//     });
-//   })
-//
-// Promise.all([apiRequest1, apiRequest2])
-//   .then((data) => {
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
