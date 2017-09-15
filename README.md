@@ -30,7 +30,7 @@ This web application will do the following:
 | API Call results in error |  | error message |
 
 
-[Screenshot here]
+![ScreenShot](/img/screenshot01.png)
 
 
 ## Known Bugs
