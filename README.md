@@ -26,6 +26,8 @@ This web application will do the following:
 | ------------- | ------------- | ------------- |
 | user enters medical issue | diabetes | List of Doctors that that treat issue |
 | user enters name | Dr. Sarah Connor | first name, last name, address, phone number, website, accepting new patients  |
+| user enters invalid request or no matches occur | 123443nnf | error message |
+| API Call results in error |  | error message |
 
 
 [Screenshot here]
