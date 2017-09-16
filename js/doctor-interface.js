@@ -3,6 +3,9 @@ import { doctor } from "./../js/doctor.js";
 $(document).ready(function(){
 
 function displayDoctors(callDoctor){
+if(callDoctor.length == 0){
+  $('#doctorInfo').text("No Doctors meet the criteria");
+}else{
   callDoctor.forEach(function(test){
     $('#doctorInfo').prepend(`<p>${test.fName} ${test.mName} ${test.lName}, ${test.title} `);
     $('#doctorInfo').prepend(`<p>${test.street} `);
@@ -11,6 +14,7 @@ function displayDoctors(callDoctor){
     $('#doctorInfo').prepend(`<p>Doctor is currently accepting new patients: ${test.acceptingPatients}`);
     $('#doctorInfo').prepend(`<img src=${test.image_url} height="42" width="42"> `);
   });
+  }
 }
 
 $('#userInputQuery').submit(function(e){

@@ -33,28 +33,19 @@ findDoctorByQuery: function(query, displayDoctors) {
   let apiRequest1 = fetch(`https://api.betterdoctor.com/2016-03-01/doctors?location=or-portland&user_key=${apiKey}&limit=2&query=${query}`)
   .then((res) => {
     res.json().then((test) => {
-      // if(test.legth === 0){
-      //   alert("No Doctors match your search.")
-      // } else {
         doctor.parseApiReturn(test, displayDoctors);
-      // }
     });
   })
-  .catch((error) => {
-    console.log(error);
-  });
+  .catch(console.log);
 },
 
 findDoctorByName: function(name, displayDoctors) {
   let apiRequest2 = fetch(`https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=or-portland&limit=10&user_key=${apiKey}`)
   .then((res) => {
     res.json().then((test) => {
-      console.log(test);
       doctor.parseApiReturn(test, displayDoctors);
     });
   })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+  .catch(console.log);
+  }
 };
